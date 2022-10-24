@@ -2,32 +2,8 @@ import { Button, Form, FormGroup, Input, Label, FormFeedback } from "reactstrap"
 import { useFormik } from 'formik';
 import { useNavigate } from "react-router-dom";
 
-const validateForm = (values) => {
-    const errors = {};
-    if(!values.name) {
-        errors.name = "Jméno je povinné.";
-    } if(values.name && values.name.length < 5) {
-        errors.name = "Minimální délka jména je 5 znaků.";
-    } if(!values.password) {
-        errors.password = "Heslo je povinné.";
-    } if(values.password && values.password.length < 4) {
-        errors.password = "Minimální délka hesla jsou 4 znaky.";
-    } if(values.password && !/\d/.test(values.password)) {
-        errors.password = "Heslo musí obsahovat číslici.";
-    } if(!values.birthdate) {
-        errors.birthdate = "Datum narození je povinné.";
-    } if(values.birthdate && new Date(values.birthdate) > new Date()) {
-        errors.birthdate = "Datum narození musí být v minulosti.";
-    } if(!values.gender) {
-        errors.gender = "Pohlaví je povinné.";
-    } if(values.checkbox === false) {
-        errors.checkbox = "Souhlas s podmínkami je povinný.";
-    }
-    //console.log(errors)
-    return errors;
-}
-
-const Formik = () => {
+// https://formik.org/
+export const Formik = () => {
     const navigate = useNavigate();
 
     const sendData = (values) => { 
@@ -131,5 +107,30 @@ const Formik = () => {
         </div>
     );
 };
+
+const validateForm = (values) => {
+    const errors = {};
+    if(!values.name) {
+        errors.name = "Jméno je povinné.";
+    } if(values.name && values.name.length < 5) {
+        errors.name = "Minimální délka jména je 5 znaků.";
+    } if(!values.password) {
+        errors.password = "Heslo je povinné.";
+    } if(values.password && values.password.length < 4) {
+        errors.password = "Minimální délka hesla jsou 4 znaky.";
+    } if(values.password && !/\d/.test(values.password)) {
+        errors.password = "Heslo musí obsahovat číslici.";
+    } if(!values.birthdate) {
+        errors.birthdate = "Datum narození je povinné.";
+    } if(values.birthdate && new Date(values.birthdate) > new Date()) {
+        errors.birthdate = "Datum narození musí být v minulosti.";
+    } if(!values.gender) {
+        errors.gender = "Pohlaví je povinné.";
+    } if(values.checkbox === false) {
+        errors.checkbox = "Souhlas s podmínkami je povinný.";
+    }
+    //console.log(errors)
+    return errors;
+}
 
 export default Formik;

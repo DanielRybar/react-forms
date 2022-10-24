@@ -2,6 +2,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
+// https://react-hook-form.com/
 export const HookForm = () => {
     const navigate = useNavigate();
     const { /*register,*/ handleSubmit, control, formState: {errors} } = useForm();

@@ -1,7 +1,8 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-const HookFormSimple = () => {
+// https://react-hook-form.com/
+export const HookFormSimple = () => {
     const navigate = useNavigate();
     const { register, handleSubmit, /*control,*/ formState: {errors} } = useForm();
 
