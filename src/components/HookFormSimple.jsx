@@ -15,26 +15,26 @@ const HookFormSimple = () => {
             <h1>Registrace pomocí hákového formuláře bez použití Bootstrapu</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
-                    <label for="name">Jméno</label>
+                    <label htmlFor="name">Jméno</label>
                     <input type="text" {...register("name", {required: true, minLength: 5})} />
                     {errors.name?.type === 'required' && <p className='error'>Toto pole je povinné.</p>}
                     {errors.name?.type === 'minLength' && <p className='error'>Minimální délka jména je 5 znaků.</p>}
                 </div>
                 <div>
-                    <label for="password">Heslo</label>
+                    <label htmlFor="password">Heslo</label>
                     <input type="password" {...register("password", {required: true, minLength: 4, pattern: /\d/})} />
                     {errors.password?.type === 'required' && <p className='error'>Toto pole je povinné.</p>}
                     {errors.password?.type === 'minLength' && <p className='error'>Minimální délka hesla jsou 4 znaky.</p>}
                     {errors.password?.type === 'pattern' && <p className='error'>Heslo musí obsahovat číslici.</p>}
                 </div>
                 <div>
-                    <label for="birthdate">Datum narození</label>
+                    <label htmlFor="birthdate">Datum narození</label>
                     <input type="date" {...register("birthdate", {required: true, validate: value => new Date(value) < new Date()})} />
                     {errors.birthdate?.type === 'required' && <p className='error'>Toto pole je povinné.</p>}
                     {errors.birthdate?.type === 'validate' && <p className='error'>Datum narození musí být v minulosti.</p>}
                 </div>
                 <div>
-                    <label for="gender">Pohlaví</label>
+                    <label htmlFor="gender">Pohlaví</label>
                     <select name="gender" {...register("gender", {required: true})}>
                         <option value="">Vyberte pohlaví</option>
                         <option value="man">Muž</option>
@@ -44,7 +44,7 @@ const HookFormSimple = () => {
                     {errors.gender && <p className='error'>Toto pole je povinné.</p>}
                 </div>
                 <div>
-                    <label for="checkbox">Souhlasím s podmínkami</label>
+                    <label htmlFor="checkbox">Souhlasím s podmínkami</label>
                     <input type="checkbox" {...register("checkbox", {required: true})} />
                     {errors.checkbox && <p className='error'>Toto pole je povinné.</p>}
                 </div>
