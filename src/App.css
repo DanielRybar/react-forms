@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.error {
+  font-size: larger;
+  color: crimson;
+}
+
+.simpleForm div {
+  margin-top: 2em;
+}
