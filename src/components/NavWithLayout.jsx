@@ -35,7 +35,7 @@ export const NavWithLayout = () => {
                         <NavLink tag={Link} to="/useRef">useRef</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink tag={Link} to="/reduxform">Redux Form</NavLink>
+                        <NavLink tag={Link} to="/simplevalidator">Simple React Validator</NavLink>
                     </NavItem>
                 </Nav>
             </Collapse>

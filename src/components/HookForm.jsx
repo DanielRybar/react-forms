@@ -1,15 +1,21 @@
 import { useForm, Controller } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate/*, useParams*/, useSearchParams } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 // https://react-hook-form.com/
 export const HookForm = () => {
     const navigate = useNavigate();
+    //const { year, month, day } = useParams(); // datum z parametrů URL
+    const [, setSearchParams] = useSearchParams(); // parametry URL k nastavení
+
     const { /*register,*/ handleSubmit, control, formState: {errors} } = useForm();
 
     const onSubmit = (data) => { 
-        navigate('/result'); 
-        alert(JSON.stringify(data, " ", 4));
+        setSearchParams({name: data.name, gender: data.gender, date: data.date});
+        setTimeout(() => {
+            navigate('/result');
+            alert(JSON.stringify(data, " ", 4));
+        }, 2000);
     }
 
     return (
@@ -31,7 +37,7 @@ export const HookForm = () => {
                 </FormGroup>
                 <FormGroup>
                     <Label for="date">Datum narození</Label>
-                    <Controller name="date" control={control} rules={{required: true, validate: value => new Date(value) < new Date()}} render={({ field }) => <Input type="date" {...field} />} />
+                    <Controller name="date" control={control} rules={{required: true, validate: value => new Date(value) < new Date()}} render={({ field }) => <Input type="date" {...field} /*value={year && month && day ? year + "-" + month + "-" + day : new Date().toISOString().slice(0, 10)}*/ />} />
                     {errors.date?.type === 'required' && <p className='error'>Toto pole je povinné.</p>}
                     {errors.date?.type === 'validate' && <p className='error'>Datum narození nemůže být v budoucnosti.</p>} 
                 </FormGroup>
