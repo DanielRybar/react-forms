@@ -18,7 +18,7 @@ export const NavWithLayout = () => {
     return (
         <>
             <Navbar color="danger" dark expand="md">
-                <NavbarBrand tag={Link} to="/">Formuláře</NavbarBrand>
+                <NavbarBrand tag={Link} to="/react-forms">Formuláře</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>

@@ -6,7 +6,7 @@ const Result = () => {
     return (
         <div className="App">
             <p className="display-3">OK</p>
-            <Button color="primary" onClick={e => { navigate("/") }}>Domů</Button>
+            <Button color="primary" onClick={e => { navigate("/react-forms") }}>Domů</Button>
             <Button color="secondary" onClick={e => { navigate(-1) }}>Zpět</Button>
         </div>
     );

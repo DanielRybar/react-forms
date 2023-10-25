@@ -16,7 +16,7 @@ function App() {
   return (
     <Switch>
       <Route path="/" element={<NavWithLayout />}>
-        <Route index element={<Home />} />
+        <Route index path="react-forms" element={<Home />} />
         <Route path="/hookform"> 
           <Route index element={<HookForm />} />
           <Route path=":firstname" element={<HookForm />} />
