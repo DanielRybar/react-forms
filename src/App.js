@@ -10,6 +10,7 @@ import UseRefForm from './components/UseRefForm'
 import UseStateForm from './components/UseStateForm'
 import Result from './components/Result';
 
+// https://github.com/gitname/react-gh-pages - deploy to github pages
 // https://blog.logrocket.com/react-form-validation-sollutions-ultimate-roundup/
 function App() {
   return (
