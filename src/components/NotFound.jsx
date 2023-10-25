@@ -6,7 +6,7 @@ export const NotFound = () => {
     return (
         <Container className="mt-5">
             <Alert color="danger">Požadovaná stránka nenalezena</Alert>
-            <Button color="danger" onClick={e => {navigate(-1)}}>Zpět</Button>
+            <Button color="danger" onClick={e => { navigate(-1) }}>Zpět</Button>
         </Container>
     );
 };

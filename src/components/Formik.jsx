@@ -1,14 +1,13 @@
 import { Button, Form, FormGroup, Input, Label, FormFeedback } from "reactstrap";
-import { useFormik } from 'formik';
+import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 
-// https://formik.org/
 export const Formik = () => {
     const navigate = useNavigate();
 
-    const sendData = (values) => { 
-        navigate("/result"); 
+    const sendData = (values) => {
         alert(JSON.stringify(values, " ", 4));
+        navigate("/result");
     }
 
     const formik = useFormik({
@@ -20,25 +19,25 @@ export const Formik = () => {
             checkbox: false
         },
         validate: validateForm,
-        onSubmit: values => {sendData(values)}
+        onSubmit: values => { sendData(values) }
     });
 
     return (
         <div>
-           <h1>Registrace pomocí Formiku</h1> 
-           <Form onSubmit={formik.handleSubmit}>
+            <h1>Registrace pomocí Formiku</h1>
+            <Form onSubmit={formik.handleSubmit}>
                 <FormGroup>
                     <Label for="name">Jméno</Label>
-                    <Input 
-                     type="text"
-                     name="name" 
-                     onChange={formik.handleChange} 
-                     onBlur={formik.handleBlur}
-                     value={formik.values.name}
-                     invalid={!!formik.errors.name}
-                     valid={formik.touched.name} />
-                    {formik.errors.name 
-                        ? <FormFeedback>{formik.errors.name}</FormFeedback> 
+                    <Input
+                        type="text"
+                        name="name"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.name}
+                        invalid={!!formik.errors.name}
+                        valid={formik.touched.name} />
+                    {formik.errors.name
+                        ? <FormFeedback>{formik.errors.name}</FormFeedback>
                         : null}
                 </FormGroup>
                 <FormGroup>
@@ -79,14 +78,14 @@ export const Formik = () => {
                         value={formik.values.gender}
                         invalid={!!formik.errors.gender}
                         valid={formik.touched.gender}>
-                            <option value="">Vyberte pohlaví</option>
-                            <option value="man">Muž</option>
-                            <option value="woman">Žena</option>
-                            <option value="other">Jiné</option>
-                        </Input>
-                        {formik.errors.gender
-                            ? <FormFeedback>{formik.errors.gender}</FormFeedback>
-                            : null}
+                        <option value="">Vyberte pohlaví</option>
+                        <option value="man">Muž</option>
+                        <option value="woman">Žena</option>
+                        <option value="other">Jiné</option>
+                    </Input>
+                    {formik.errors.gender
+                        ? <FormFeedback>{formik.errors.gender}</FormFeedback>
+                        : null}
                 </FormGroup>
                 <FormGroup check>
                     <Label for="checkbox">Souhlas s podmínkami</Label>
@@ -103,30 +102,30 @@ export const Formik = () => {
                         : null}
                 </FormGroup>
                 <Button type="submit">Odeslat</Button>
-           </Form>
+            </Form>
         </div>
     );
 };
 
 const validateForm = (values) => {
     const errors = {};
-    if(!values.name) {
+    if (!values.name) {
         errors.name = "Jméno je povinné.";
-    } if(values.name && values.name.length < 5) {
+    } if (values.name && values.name.length < 5) {
         errors.name = "Minimální délka jména je 5 znaků.";
-    } if(!values.password) {
+    } if (!values.password) {
         errors.password = "Heslo je povinné.";
-    } if(values.password && values.password.length < 4) {
+    } if (values.password && values.password.length < 4) {
         errors.password = "Minimální délka hesla jsou 4 znaky.";
-    } if(values.password && !/\d/.test(values.password)) {
+    } if (values.password && !/\d/.test(values.password)) {
         errors.password = "Heslo musí obsahovat číslici.";
-    } if(!values.birthdate) {
+    } if (!values.birthdate) {
         errors.birthdate = "Datum narození je povinné.";
-    } if(values.birthdate && new Date(values.birthdate) > new Date()) {
+    } if (values.birthdate && new Date(values.birthdate) > new Date()) {
         errors.birthdate = "Datum narození musí být v minulosti.";
-    } if(!values.gender) {
+    } if (!values.gender) {
         errors.gender = "Pohlaví je povinné.";
-    } if(values.checkbox === false) {
+    } if (values.checkbox === false) {
         errors.checkbox = "Souhlas s podmínkami je povinný.";
     }
     //console.log(errors)

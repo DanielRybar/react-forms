@@ -6,8 +6,8 @@ import Home from './components/Home';
 import HookForm from './components/HookForm';
 import HookFormSimple from './components/HookFormSimple';
 import Formik from './components/Formik';
-import FormWithRef from './components/FormWithRef';
-import SimpleValidator from './components/SimpleValidator';
+import UseRefForm from './components/UseRefForm'
+import UseStateForm from './components/UseStateForm'
 import Result from './components/Result';
 
 // https://blog.logrocket.com/react-form-validation-sollutions-ultimate-roundup/
@@ -18,12 +18,12 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/hookform"> 
           <Route index element={<HookForm />} />
-          <Route path=":year/:month/:day" element={<HookForm />} />
+          <Route path=":firstname" element={<HookForm />} />
         </Route>
         <Route path="/hookformsimple" element={<HookFormSimple />} />
         <Route path="/formik" element={<Formik />} />
-        <Route path="/useRef" element={<FormWithRef />} />
-        <Route path="/simplevalidator" element={<SimpleValidator />} />
+        <Route path="/useRef" element={<UseRefForm />} />
+        <Route path="/useState" element={<UseStateForm />} />
         <Route path="/result" element={<Result />} />
         <Route path="*" element={<NotFound />} />
       </Route>
